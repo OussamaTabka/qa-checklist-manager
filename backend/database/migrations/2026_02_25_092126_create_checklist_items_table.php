@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('checklist_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('checklist_id')->constrained('checklists')->cascadeOnDelete();
             $table->string('label');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('priority')->default(0);
